@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Websocket client</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+      
+      var websocket;
+      $(document).ready(init);
+      
+      function init() {
+        if (!window.WebSocket) {  
+          $('#status').append('<p><span style="color: red;">websockets are not supported </span></p>');
+          $("#navigation").hide();
+          $("#connected").hide(); 	
+          $("#content").hide();
+        } 
+        else {
+          $('#status').append('<p><span style="color: green;">websockets are supported </span></p>');
+          connect();
+        }
+      };
+
+      function connect()
+      {
+        showScreen('<span style="color: red;">connecting</span>');
+        websocket = new WebSocket("ws://" + location.host + "/websocket");
+        websocket.onopen = function(evt) { onOpen(evt) }; 
+        websocket.onclose = function(evt) { onClose(evt) }; 
+        websocket.onmessage = function(evt) { onMessage(evt) }; 
+        websocket.onerror = function(evt) { onError(evt) }; 
+      };  
+      
+      function disconnect() {
+        websocket.close();
+      }; 
+
+      function sendTxt() {
+        if (websocket.readyState == websocket.OPEN){
+          txt = $("#send_txt").val();
+          websocket.send(txt);
+          showScreen('sending: ' + txt); 
+        } 
+        else
+          showScreen('websocket is not connected'); 
+      };
+
+      function onOpen(evt) { 
+        showScreen('<span style="color: green;">connected</span>'); 
+        $("#connected").fadeIn('slow');
+        $("#content").fadeIn('slow');
+      };  
+
+      function onClose(evt) { 
+        showScreen('<span style="color: red;">disconnected</span>');
+        setTimeout(this.connect, 1000)
+      };  
+
+      function onMessage(evt) { 
+        showScreen('<span style="color: blue;">Server said: ' + evt.data+ '</span>'); 
+      };
+      
+      function onError(evt) {
+        showScreen('<span style="color: red;">disconnected</span>');
+        setTimeout(this.connect, 1000)
+      }
+
+      function showScreen(txt) { 
+        $('#output').html('<p>' + txt + '</p>');
+      };
+    </script>
+  </head>
+
+  <body>
+    <div id="header">
+      <h1>Websocket client</h1>
+      <div id="status"></div>
+    </div>
+
+
+    <div id="navigation">
+      <div id="connected">				
+  	    <p>
+      	  <input type='text' id="send_txt" value=></input>
+      	  <button type="button" onclick="sendTxt();">send</button>
+      	</p>
+      </div>
+
+      <div id="content">						
+      	<div id="output"></div>
+      </div>
+    </div>
+  </body>
+</html>
