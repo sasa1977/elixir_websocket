@@ -31,11 +31,11 @@ defmodule ElixirWebsocket.Cowboy.WsHandler do
   end
   
   def websocket_info(_, req, state) do
-  	{:ok, req, state}
+    {:ok, req, state}
   end
   
 
   def websocket_terminate(_, _, _) do
-  	:ok
-	end
+    :ok
+  end
 end
