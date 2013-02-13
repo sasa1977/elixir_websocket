@@ -7,4 +7,4 @@ Usage:
     mix deps.get
     mix run --no-halt
 
-Navigate to localhost:8080/index.html
+Navigate to localhost:8080

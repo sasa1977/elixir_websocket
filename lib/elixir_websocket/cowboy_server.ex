@@ -2,9 +2,11 @@ defmodule ElixirWebsocket.Cowboy.Server do
   def start_link do    
     dispatch = :cowboy_router.compile([{:_, [
       {"/websocket", ElixirWebsocket.Cowboy.WsHandler, []},
+      
       {
-        "/[...]", :cowboy_static, [
+        "/", :cowboy_static, [
           directory: {:priv_dir, :elixir_websocket, []},
+          file: "index.html",
           mimetypes: {function(:mimetypes, :path_to_mimes, 2), :default}
       ]}
     ]}])
