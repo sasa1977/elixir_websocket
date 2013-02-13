@@ -4,15 +4,16 @@ defmodule ElixirWebsocket.WsHandler do
   end
   
   def websocket_init(_, req, _) do
-    me = self
-    Process.spawn(fn() -> send_messages(me) end)
+    send_messages(self)
     {:ok, req, nil}
   end
   
   defp send_messages(process) do
-    Enum.each(1..10, fn(index) ->
-      :timer.sleep(:timer.seconds(1))
-      process <- {:message, "generated message #{index}"}
+    Process.spawn(fn() ->
+      Enum.each(1..10, fn(index) ->
+        :timer.sleep(:timer.seconds(1))
+        process <- {:message, "generated message #{index}"}
+      end)
     end)
   end
   
