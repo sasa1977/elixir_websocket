@@ -7,6 +7,4 @@ Usage:
     mix deps.get
     mix run --no-halt
 
-The command above will fetch all dependencies and compile them.
-
 Navigate to localhost:8080/index.html
