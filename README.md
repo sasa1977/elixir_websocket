@@ -1,6 +1,6 @@
 elixir_websocket
 ==================
-Elixir example of Cowboy websocket. Ported and modified erlang version of official cowboy examples.
+Elixir example of Cowboy websocket. Ported and modified erlang version of official cowboy example.
 
 Usage:
 
