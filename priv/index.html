@@ -16,7 +16,7 @@
           $("#content").hide();
         } 
         else {
-          $('#status').append('<p><span style="color: green;">websockets are supported </span></p>');
+          $('#status').hide();
           connect();
         }
       };
@@ -57,7 +57,7 @@
       };  
 
       function onMessage(evt) { 
-        showScreen('<span style="color: blue;">Server sent: ' + evt.data+ '</span>'); 
+        showScreen('<span style="color: blue;">Server sent ' + evt.data+ '</span>'); 
       };
       
       function onError(evt) {
