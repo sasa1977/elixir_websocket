@@ -22,7 +22,7 @@ defmodule ElixirWebsocket.WsHandler do
     {:reply, {:text, "received '#{msg}' from client"}, req, state}
   end
   
-  def websocket_handle(_D, req, state) do
+  def websocket_handle(_, req, state) do
   	{:ok, req, state}
   end
   

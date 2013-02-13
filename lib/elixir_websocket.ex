@@ -1,9 +1,17 @@
 defmodule ElixirWebsocket do
   use Application.Behaviour
-
-  # See http://elixir-lang.org/docs/stable/Application.Behaviour.html
-  # for more information on OTP Applications
   def start(_type, _args) do
-    ElixirWebsocket.Supervisor.start_link
+    dispatch = :cowboy_router.compile([{:_, [
+      {"/websocket", ElixirWebsocket.WsHandler, []},
+      
+      {
+        "/", :cowboy_static, [
+          directory: {:priv_dir, :elixir_websocket, []},
+          file: "index.html",
+          mimetypes: {function(:mimetypes, :path_to_mimes, 2), :default}
+      ]}
+    ]}])
+    
+    :cowboy.start_http(:http, 100, [port: 8080], [env: [dispatch: dispatch]])
   end
 end
