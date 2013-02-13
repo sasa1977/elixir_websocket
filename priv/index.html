@@ -15,8 +15,7 @@
         } 
       }
 
-      function connect()
-      {
+      function connect() {
         showMessage('connecting');
         websocket = $.extend(new WebSocket("ws://" + location.host + "/websocket"), {
           onopen: function() {showMessage('connected')},
