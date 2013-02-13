@@ -1,4 +1,4 @@
-defmodule ElixirWebsocket.Cowboy.WsHandler do
+defmodule ElixirWebsocket.WsHandler do
   def init(_transport, _, []) do
     {:upgrade, :protocol, :cowboy_websocket}
   end

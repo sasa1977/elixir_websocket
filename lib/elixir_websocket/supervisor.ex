@@ -7,7 +7,7 @@ defmodule ElixirWebsocket.Supervisor do
 
   def init([]) do
     children = [
-      worker(ElixirWebsocket.Cowboy.Server, [])
+      worker(ElixirWebsocket.WebServer, [])
     ]
 
     supervise children, strategy: :one_for_one

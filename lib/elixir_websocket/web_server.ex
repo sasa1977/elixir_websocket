@@ -1,7 +1,7 @@
-defmodule ElixirWebsocket.Cowboy.Server do
+defmodule ElixirWebsocket.WebServer do
   def start_link do    
     dispatch = :cowboy_router.compile([{:_, [
-      {"/websocket", ElixirWebsocket.Cowboy.WsHandler, []},
+      {"/websocket", ElixirWebsocket.WsHandler, []},
       
       {
         "/", :cowboy_static, [
