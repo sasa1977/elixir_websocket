@@ -8,7 +8,7 @@ defmodule ElixirWebsocket.Mixfile do
   def application do
     [
       mod: {ElixirWebsocket, []},
-      applications: [:ranch, :cowboy]
+      applications: [:mimetypes, :ranch, :cowboy]
     ]
   end
 

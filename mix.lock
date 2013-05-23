@@ -1,3 +1,3 @@
 [ "cowboy": {:git,"https://github.com/extend/cowboy.git","46cce4814390a2917563ce7af82e0e1bbfc81ed3",[]},
-  "mimetypes": {:git,"https://github.com/spawngrid/mimetypes.git","0800544bbb684616651a2a1b30aa260132d17d37",[]},
+  "mimetypes": {:git,"https://github.com/spawngrid/mimetypes.git","507823a0e6a5f6654c61945152a7ba88bd55ad0e",[]},
   "ranch": {:git,"https://github.com/extend/ranch.git","265e372fd2d5ef121df729bb15a9d90e85cb2b35",[]} ]
