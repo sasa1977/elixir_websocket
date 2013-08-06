@@ -14,7 +14,6 @@ defmodule ElixirWebsocket.Mixfile do
 
   defp deps do
     [
-      {:ranch, github: "extend/ranch"},
       {:cowboy, github: "extend/cowboy"},
       {:mimetypes, github: "spawngrid/mimetypes"}
     ]

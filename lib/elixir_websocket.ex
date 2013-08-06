@@ -9,7 +9,7 @@ defmodule ElixirWebsocket do
         "/", :cowboy_static, [
           directory: {:priv_dir, :elixir_websocket, []},
           file: "index.html",
-          mimetypes: {function(:mimetypes, :path_to_mimes, 2), :default}
+          mimetypes: {&:mimetypes.path_to_mimes/2, :default}
       ]}
     ]}])
     
